@@ -1,0 +1,11 @@
+---
+
+- name: Checkout GDAL
+  git: repo={{ gdal_git_url }} version={{ gdal_git_branch }} dest={{ gdal_git_path }} 
+
+- name: Build GDAL with python support
+  shell: 'cd {{ gdal_git_path }}/gdal; {{ item }}'
+  with_items:
+    - ./configure --with-python
+    - make
+    - make install

@@ -1,0 +1,14 @@
+---
+developing: "'development' in group_names"
+packing: "'packer' in group_names"
+
+prefix: /usr/local
+local_lib_path: /usr/local/lib
+
+szip_url: http://www.hdfgroup.org/ftp/lib-external/szip/2.1/src/szip-2.1.tar.gz
+hdf5_url: http://www.hdfgroup.org/ftp/HDF5/releases/hdf5-1.8.12/src/hdf5-1.8.12.tar.bz2
+netcdf_url: http://www.gfd-dennou.org/library/netcdf/unidata-mirror/netcdf-4.3.2.tar.gz
+
+gdal_git_branch: 950849f98ceba0dcdaa0677abe59411caf3329b8
+gdal_git_url: https://github.com/OSGeo/gdal.git
+

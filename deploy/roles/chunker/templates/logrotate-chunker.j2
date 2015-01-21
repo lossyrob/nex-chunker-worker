@@ -1,0 +1,7 @@
+{{ chunker_log }} {
+  rotate {{ chunker_log_rotate_count }}
+  {{ chunker_log_rotate_interval }}
+  compress
+  missingok
+  notifempty
+}

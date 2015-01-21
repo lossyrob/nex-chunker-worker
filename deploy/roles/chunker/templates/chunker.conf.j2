@@ -1,0 +1,23 @@
+description "chunker"
+
+{% if 'development' in group_names -%}
+start on (vagrant-mounted)
+{% else %}
+start on (local-filesystems and net-device-up IFACE!=lo)
+{% endif %}
+stop on shutdown
+
+respawn
+setuid chunker
+chdir {{ chunker_home }}
+env HOME="/var/lib/chunker"
+
+script
+  export AWS_ACCESS_KEY_ID="{{ aws_access_key }}"
+  export AWS_SECRET_ACCESS_KEY="{{ aws_secret_key }}"
+  export CHUNKER_QUEUE="{{ target_s3_queue }}"
+  export CHUNKER_TARGET_BUCKET="{{ target_s3_bucket }}"
+  export LD_LIBRARY_PATH={{ local_lib_path }}
+  export GDAL_NETCDF_BOTTOMUP=NO
+  python application.py >> {{ chunker_log }} 2>&1
+end script

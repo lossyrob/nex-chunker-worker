@@ -1,0 +1,11 @@
+---
+
+- name: Install boto
+  pip: name=boto version=2.35.2
+
+- name: Install numpy
+  pip: name=numpy version=1.9.1
+
+- name: Install rasterio
+  pip: name=rasterio version=0.17
+    

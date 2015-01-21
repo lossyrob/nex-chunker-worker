@@ -1,0 +1,50 @@
+---
+
+- name: Download szip
+  get_url: url={{ szip_url }} dest={{ home_path }}/szip-sources.tar.gz
+
+- name: Make szip-sources directory
+  file: path={{ home_path }}/szip-sources state=directory
+
+- name: Extract szip
+  command: tar xf {{ home_path }}/szip-sources.tar.gz -C {{ home_path}}/szip-sources --strip-components=1
+
+- name: Build and install szip
+  shell: 'cd szip-sources ; {{ item }}'
+  with_items:
+    - ./configure --disable-debug --disable-dependency-tracking --prefix={{ prefix }}
+    - make install
+
+
+- name: Download hdf5
+  get_url: url={{ hdf5_url }} dest={{ home_path }}/hdf5-sources.tar.bz2
+
+- name: Make hdf5-sources directory
+  file: path={{ home_path }}/hdf5-sources state=directory
+
+
+- name: Extract hdf5
+  command: tar xf {{ home_path }}/hdf5-sources.tar.bz2 -C {{ home_path}}/hdf5-sources --strip-components=1
+
+- name: Build and install hdf5
+  shell: 'cd hdf5-sources ; {{ item }}'
+  with_items:
+    - ./configure --prefix={{ prefix }} --enable-production --enable-debug=no --disable-dependency-tracking --with-zlib=/usr --with-szlib=/usr/local --enable-filters=all --enable-static=yes --enable-shared=yes
+    - make install
+
+
+
+- name: Download netcdf
+  get_url: url={{ netcdf_url }} dest={{ home_path }}/netcdf-sources.tar.gz
+
+- name: Make netcdf-sources directory
+  file: path={{ home_path}}/netcdf-sources state=directory
+
+- name: Extract netcdf
+  command: tar xf {{ home_path }}/netcdf-sources.tar.gz -C {{ home_path }}/netcdf-sources --strip-components=1
+
+- name: Build and install netcdf
+  shell: 'cd netcdf-sources ; {{ item }}'
+  with_items:
+    - ./configure --disable-dependency-tracking --disable-dap-remote-tests --prefix={{ prefix }} --enable-static --enable-shared --enable-netcdf4 --disable-doxygen
+    - make install

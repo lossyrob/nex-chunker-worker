@@ -1,0 +1,10 @@
+---
+- hosts: worker
+  sudo: True
+
+  roles:
+    - { "role": "packages" }
+    - { "role": "netcdf" }
+    - { "role": "gdal" }
+    - { "role": "rasterio" }
+    - { "role": "chunker" }

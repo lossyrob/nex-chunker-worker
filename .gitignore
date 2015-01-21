@@ -1,0 +1,6 @@
+.vagrant
+*.tif
+*.nc
+*.pyc
+
+*~

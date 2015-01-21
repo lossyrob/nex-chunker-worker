@@ -1,0 +1,19 @@
+---
+
+- name: Install system packages
+  apt: pkg={{ item }} state=latest update_cache=yes
+  with_items:
+    - g++
+    - git
+    - libpng12-dev
+    - libjpeg-dev
+    - libtiff5-dev
+    - libgeotiff-dev
+    - libproj-dev
+    - libgeos-dev
+    - python-pip
+    - python-dev
+    - libproj-dev
+    - python-dev
+    - daemontools
+

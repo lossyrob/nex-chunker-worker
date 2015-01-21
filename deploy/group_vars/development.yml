@@ -1,0 +1,10 @@
+---
+
+home_path: /home/vagrant
+gdal_git_path: /home/vagrant/gdal
+
+aws_access_key: "{{ lookup('env', 'AWS_ACCESS_KEY_ID') }}"
+aws_secret_key: "{{ lookup('env', 'AWS_SECRET_ACCESS_KEY') }}"
+
+target_s3_bucket: nex-test-dest
+target_s3_queue: nex-chunk-test 

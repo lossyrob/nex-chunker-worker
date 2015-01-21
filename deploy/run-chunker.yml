@@ -1,0 +1,7 @@
+---
+
+- name: Test
+  hosts: worker
+  sudo: yes
+  roles:
+    - chunker

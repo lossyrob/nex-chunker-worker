@@ -1,0 +1,14 @@
+---
+chunker_home: /opt/chunker
+chunker_env_dir: /etc/chunker.d/env
+chunker_deploy_branch: "master"
+
+chunker_config:
+  - { file: "AWS_ACCESS_KEY", content: "{{ aws_access_key }}" }
+  - { file: "AWS_SECRET_KEY", content: "{{ aws_secret_key }}" }
+  - { file: "LD_LIBRARY_PATH", content: "{{ local_lib_path }}" }
+  - { file: "GDAL_NETCDF_BOTTOMUP", content: "NO" }
+
+chunker_log: /var/log/chunker.log
+chunker_log_rotate_count: 5
+chunker_log_rotate_interval: daily

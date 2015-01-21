@@ -1,0 +1,3 @@
+---
+- name: Restart chunker
+  service: name=chunker state=restarted
